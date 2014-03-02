@@ -3,8 +3,8 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/html/target/game01-html-1.0-SNAPSHOT/WEB-INF/lib/playn-core-1.8-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/html/target/game01-html-1.0-SNAPSHOT/WEB-INF/lib/appengine-api-1.0-sdk-1.6.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/html/target/game01-html-1.0-SNAPSHOT/WEB-INF/lib/playn-webgl-1.8.jar!/" />
       <root url="jar://$PROJECT_DIR$/html/target/game01-html-1.0-SNAPSHOT/WEB-INF/lib/game01-core-1.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/html/target/game01-html-1.0-SNAPSHOT/WEB-INF/lib/playn-webgl-1.8.jar!/" />
       <root url="jar://$PROJECT_DIR$/html/target/game01-html-1.0-SNAPSHOT/WEB-INF/lib/playn-html-1.8.jar!/" />
       <root url="jar://$PROJECT_DIR$/html/target/game01-html-1.0-SNAPSHOT/WEB-INF/lib/validation-api-1.0.0.GA.jar!/" />
       <root url="jar://$PROJECT_DIR$/html/target/game01-html-1.0-SNAPSHOT/WEB-INF/lib/game01-core-1.0-SNAPSHOT-sources.jar!/" />

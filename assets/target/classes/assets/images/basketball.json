@@ -1,0 +1,6 @@
+{
+    "urls": ["images/basketball (Copy).png"],
+    "sprites": [
+         {"id": "IDLE_0", "urls": 0, "x": 0, "y": 0, "w": 55, "h": 55}
+         ]
+}

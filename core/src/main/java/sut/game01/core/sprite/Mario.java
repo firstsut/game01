@@ -1,8 +1,10 @@
 package sut.game01.core.sprite;
 
+
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.*;
+import playn.core.Key;
 import playn.core.Keyboard;
 import playn.core.Layer;
 import playn.core.PlayN;
@@ -50,7 +52,13 @@ public class Mario {
         PlayN.keyboard().setListener(new Keyboard.Listener() {
             @Override
             public void onKeyDown(Keyboard.Event event) {
-
+                if (event.key()== Key.LEFT){
+                    body.applyForce(new Vec2(-20f,0f),body.getPosition());
+                }else if (event.key()== Key.UP){
+                    body.applyForce(new Vec2(-100f, -260), body.getPosition());
+                }else if (event.key()== Key.RIGHT){
+                    body.applyForce(new Vec2(20f,0f),body.getPosition());
+                }
             }
 
             @Override
@@ -60,7 +68,7 @@ public class Mario {
 
             @Override
             public void onKeyUp(Keyboard.Event event) {
-                body.applyForce(new Vec2(-100f,-260),body.getPosition());
+
 
             }
         });
