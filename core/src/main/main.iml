@@ -11,6 +11,10 @@
     <orderEntry type="library" name="Maven: com.threerings:tripleplay:1.8" level="project" />
     <orderEntry type="library" name="Maven: org.jbox2d:jbox2d-library:2.1.2.3" level="project" />
     <orderEntry type="library" name="Maven: com.threerings:react:1.4.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.android:android:4.1.1.4" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:13.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.appengine:appengine-api-1.0-sdk:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.playn:playn-core:1.8" level="project" />
   </component>
 </module>
 
