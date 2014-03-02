@@ -1,0 +1,26 @@
+<component name="libraryTable">
+  <library name="surefire2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter2183503739791606641.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter5029997008519141522.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter8142162949587611719.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter7641752546081969249.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter4053599025133248893.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter1691931647507644436.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter6426437091397042809.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter1309085464142423650.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter5550666616772673410.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter6404191311358600195.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter4836584494685116730.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter8681755752342195738.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter4678037496683652617.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter6767729129202536680.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter4445547900302318469.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter8052559527417697656.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter6937653709574672083.jar!/" />
+      <root url="jar://$PROJECT_DIR$/assets/target/surefire/surefirebooter6965427447594856647.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
