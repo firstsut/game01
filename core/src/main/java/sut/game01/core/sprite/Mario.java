@@ -113,6 +113,7 @@ public class Mario {
         if (!hasLoaded) return;
         sprite.layer().setTranslation((body.getPosition().x / TestScreen.M_PER_PIXEL) - 10,
                 body.getPosition().y / TestScreen.M_PER_PIXEL);
+        sprite.layer().setRotation(body.getAngle());
 
     }
 }
