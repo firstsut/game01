@@ -5,7 +5,7 @@
       <configuration>
         <option name="COMPILE_CUSTOM_GENERATED_SOURCES" value="false" />
         <additionalNativeLibs>
-          <item architecture="armeabi" url="file://$MAVEN_REPOSITORY$/com/googlecode/playn/playn-android-nativelib/1.0/playn-android-nativelib-1.0.so" targetFileName="libplayn-android-nativelib.so" />
+          <item architecture="armeabi" url="file://C:/dev/.m2/repository/com/googlecode/playn/playn-android-nativelib/1.0/playn-android-nativelib-1.0.so" targetFileName="libplayn-android-nativelib.so" />
         </additionalNativeLibs>
       </configuration>
     </facet>
@@ -18,7 +18,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Maven Android API 11 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="game01-core" />
     <orderEntry type="library" name="Maven: com.threerings:tripleplay:1.8" level="project" />

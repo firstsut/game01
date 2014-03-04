@@ -1,9 +1,14 @@
 package sut.game01.core.screen;
 
+import org.jbox2d.callbacks.ContactImpulse;
+import org.jbox2d.callbacks.ContactListener;
 import org.jbox2d.callbacks.DebugDraw;
+import org.jbox2d.collision.Manifold;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.*;
+import org.jbox2d.dynamics.contacts.Contact;
+import org.jbox2d.dynamics.contacts.PolygonContact;
 import playn.core.CanvasImage;
 import playn.core.Image;
 import playn.core.util.Clock;
@@ -30,6 +35,7 @@ public class TestScreen extends UIScreen {
     private static int width=24;
     public static int height=18;
     private World world;
+
     private Image imageBack;
     private ImageLayer imageLayer1;
     private	float x = 0f;
@@ -40,6 +46,9 @@ public class TestScreen extends UIScreen {
     }
     private Root root;
     private Mario mario;
+    private Body ground;
+    private Body ground1;
+
     
     @Override
     public void wasAdded() {
@@ -48,9 +57,9 @@ public class TestScreen extends UIScreen {
         world.setWarmStarting(true);
         world.setAutoClearForces(true);
         super.wasAdded();
-       Image bgImage = assets().getImage("images/1916x1080-gameBG_3PS (Copy).jpg");
+        Image bgImage = assets().getImage("images/1916x1080-gameBG_3PS (Copy).jpg");
         ImageLayer bgLayer = graphics().createImageLayer(bgImage);
-         Image ci = assets().getImage("images/Basketball_Hoop.png");
+        Image ci = assets().getImage("images/Basketball_Hoop.png");
         ImageLayer bgci = graphics().createImageLayer(ci);
         bgci.setTranslation(-10f,130f);
         graphics().rootLayer().add(bgLayer);
@@ -74,13 +83,16 @@ public class TestScreen extends UIScreen {
             debugDraw.setCamera(0,0,1f/TestScreen.M_PER_PIXEL);
             world.setDebugDraw(debugDraw);
         }
-        Body ground = world.createBody(new BodyDef());
+
+        ground = world.createBody(new BodyDef());
+        ground1 = world.createBody(new BodyDef());
         PolygonShape groundShape = new PolygonShape();
         PolygonShape groundShape1 = new PolygonShape();
         PolygonShape groundShape2 = new PolygonShape();
         PolygonShape groundShape3 = new PolygonShape();
-        PolygonShape groundShape4 = new PolygonShape();
+         PolygonShape groundShape4 = new PolygonShape();
         PolygonShape groundShape5 = new PolygonShape();
+        PolygonShape groundShape6 = new PolygonShape();
         groundShape.setAsEdge(new Vec2(0f, height-0),
                 new Vec2(width-0f, height-0));
         ground.createFixture(groundShape, 0.0f);
@@ -97,16 +109,45 @@ public class TestScreen extends UIScreen {
         groundShape4.setAsEdge(new Vec2(0.5f, 8f),
                 new Vec2(0.5f, 6f));
         ground.createFixture(groundShape4, 0.0f);
-          groundShape5.setAsEdge(new Vec2(3.6f, 6.5f),
-                new Vec2(3.6f, 6.3f));
+        groundShape5.setAsEdge(new Vec2(3.6f, 6.3f),
+                new Vec2(3.6f, 8.3f));
         ground.createFixture(groundShape5, 0.0f);
-       
+        groundShape6.setAsEdge(new Vec2(1f, height-9.5f),
+                new Vec2(width-21f, height-9.5f));
+        ground1.createFixture(groundShape6, 0.0f);
 
         mario = new Mario(world,500f, 450f);
-
-       
-
         layer.add(mario.layer());
+
+        world.setContactListener(new ContactListener() {
+            @Override
+            public void beginContact(Contact contact) {
+                if (contact.getFixtureA().getBody() == ground1){
+
+                        mario.layer().destroy();
+
+                }else if (contact.getFixtureA().getBody() == ground){
+                    System.out.print("B is ground");
+                }
+            }
+
+            @Override
+            public void endContact(Contact contact) {
+
+
+            }
+
+            @Override
+            public void preSolve(Contact contact, Manifold manifold) {
+
+            }
+
+            @Override
+            public void postSolve(Contact contact, ContactImpulse contactImpulse) {
+
+            }
+        });
+
        
        // graphics().rootLayer().add(mario.layer());
 
@@ -119,7 +160,7 @@ public class TestScreen extends UIScreen {
    @Override
    public void update(int delta){
         mario.update(delta);
-        world.step(0.033f,10,10);
+        world.step(0.033f, 10, 10);
        super.update(delta);
 
 
@@ -133,6 +174,7 @@ public class TestScreen extends UIScreen {
            world.drawDebugData();
        }
         mario.paint(clock);
+
 
     }
 
