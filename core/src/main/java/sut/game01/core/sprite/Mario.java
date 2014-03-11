@@ -13,23 +13,21 @@ import playn.core.util.Clock;
 import sut.game01.core.screen.TestScreen;
 
 public class Mario {
-    private Sprite sprite;
+    public Sprite sprite;
     private int SpriteIndex = 0;
-    private boolean hasLoaded = false;
-    private int t;
-    private int hp=100;
-
-
-
+    private boolean hasLoaded =false;
+    private PolygonShape shape;
+    private float angle=0f;
     public enum State{
         IDLE,DIEm,KICK
     };
 
     private State state = State.IDLE;
-
+    private BodyDef bf;
     private int e = 0;
     private int offset = 0;
-    private Body body;
+    public Body body;
+    private TestScreen t;
 
     public Mario(final World world,final float x, final  float y){
         sprite = SpriteLoader.getSprite("images/basketball.json");
@@ -39,7 +37,7 @@ public class Mario {
                 sprite.setSprite(SpriteIndex);
                 sprite.layer().setOrigin(sprite.width()/2f,
                                          sprite.height()/2f);
-                sprite.layer().setTranslation(x,y + 13f);
+                sprite.layer().setTranslation(x,y);
                 body = initPhysicsBody(world,TestScreen.M_PER_PIXEL*x,TestScreen.M_PER_PIXEL*y);
                 hasLoaded = true;
             }
@@ -55,9 +53,10 @@ public class Mario {
                 if (event.key()== Key.LEFT){
                     body.applyForce(new Vec2(-20f,0f),body.getPosition());
                 }else if (event.key()== Key.UP){
-                    body.applyForce(new Vec2(-100f, -260), body.getPosition());
+                    body.applyForce(new Vec2(-95f, -230), body.getPosition());
                 }else if (event.key()== Key.RIGHT){
                     body.applyForce(new Vec2(20f,0f),body.getPosition());
+
                 }
             }
 
@@ -79,13 +78,13 @@ public class Mario {
 
     
 
-    private Body initPhysicsBody(World world,float x,float y){
-        BodyDef bf=new BodyDef();
+    public Body initPhysicsBody(World world,float x,float y){
+        bf=new BodyDef();
         bf.type= BodyType.DYNAMIC;
         bf.position=new Vec2(0,0);
         Body body =world.createBody(bf);
-        PolygonShape shape=new PolygonShape();
-        shape.setAsBox(56* TestScreen.M_PER_PIXEL/2,sprite.layer().height()*TestScreen.M_PER_PIXEL/2);
+         shape=new PolygonShape();
+        shape.setAsBox(50* TestScreen.M_PER_PIXEL/2,sprite.layer().height()*TestScreen.M_PER_PIXEL/2);
         FixtureDef fd =new FixtureDef();
         fd.shape=shape;
         fd.density=0.1f;
@@ -105,15 +104,16 @@ public class Mario {
         if(!hasLoaded) return;;
         SpriteIndex=offset+((SpriteIndex+1)%1);
         sprite.setSprite(SpriteIndex);
-       
-
 
     }
     public void paint(Clock clock){
         if (!hasLoaded) return;
-        sprite.layer().setTranslation((body.getPosition().x / TestScreen.M_PER_PIXEL) - 10,
+        sprite.layer().setTranslation((body.getPosition().x / TestScreen.M_PER_PIXEL),
                 body.getPosition().y / TestScreen.M_PER_PIXEL);
         sprite.layer().setRotation(body.getAngle());
 
+
     }
+
+
 }

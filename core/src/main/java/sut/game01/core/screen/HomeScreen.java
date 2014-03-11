@@ -41,21 +41,15 @@ public class HomeScreen extends UIScreen {
     }
     @Override
     public void wasAdded(){
-        Image bgImage = assets().getImage("images/TheDarkMatter_1920x1080.jpg");
+        Image bgImage = assets().getImage("images/nba-slam-dunk-165899 (Copy).jpg");
+        Image btnstart = assets().getImage("images/start1.png");
         ImageLayer bgLayer = graphics().createImageLayer(bgImage);
-        Image btnstart = assets().getImage("images/start.png");
         ImageLayer btnlayer = graphics().createImageLayer(btnstart);
-        Image btnoption = assets().getImage("images/option.png");
-        ImageLayer btnlayerop = graphics().createImageLayer(btnoption);
-        Image btnexit = assets().getImage("images/exit.png");
-        ImageLayer btnlayerexit = graphics().createImageLayer(btnexit);
-        btnlayer.setTranslation(380f,10f);
-        btnlayerop.setTranslation(380f,70f);
-        btnlayerexit.setTranslation(380f,130f);
+        btnlayer.setTranslation(40f,200f);
         layer.add(bgLayer);
         layer.add(btnlayer);
-        layer.add(btnlayerop);
-        layer.add(btnlayerexit);
+
+
 
         btnlayer.addListener(new Pointer.Adapter(){
             @Override
