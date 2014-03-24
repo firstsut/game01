@@ -10,28 +10,17 @@ import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.*;
 import org.jbox2d.dynamics.contacts.Contact;
-import org.jbox2d.dynamics.contacts.PolygonContact;
 import playn.core.*;
-import playn.core.Font;
 import playn.core.Image;
 import playn.core.util.Clock;
-import react.UnitSlot;
-import sut.game01.core.MyGame;
 import sut.game01.core.debug.DebugDrawBox2D;
 import sut.game01.core.sprite.Basketball;
-import sut.game01.core.sprite.Mario;
-import tripleplay.game.Screen;
 import tripleplay.game.ScreenStack;
 import tripleplay.game.UIScreen;
-import tripleplay.game.trans.SlideTransition;
 import tripleplay.ui.*;
-import tripleplay.ui.Button;
 import tripleplay.ui.layout.AxisLayout;
-import tripleplay.util.EffectRenderer;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -50,7 +39,7 @@ public class TestScreen extends UIScreen {
     public static boolean rootOpenScore=true,rootOpenTime=true,rootOpenLevel=true;
     private Image bgImage,ci,bgwin,bgover,btnleft,btnright,btnup;
     private ImageLayer imageLayer1,bgLayer,bgci,bgLayerwin,bgLayerover,btnlayerleft,btnlayerright,btnlayerup;
-    private	float x = 0f;
+    private	float x = 0f,random=450f;
     private	float y = 0f;
     public Root root,root1,root2,root3;
     private final ScreenStack ss;
@@ -58,6 +47,8 @@ public class TestScreen extends UIScreen {
     private Basketball basketball;
     private Body ground,ground1,ground2,ground3,ground4,ground5;
     private Sound sound,win,over,shoot,bottom,edgeleft,edge,next;
+    public ActionListener ac;
+    public Timer timer;
 
     public TestScreen(ScreenStack ss){
         this.ss = ss;
@@ -65,8 +56,17 @@ public class TestScreen extends UIScreen {
 
     @Override
     public void wasAdded() {
-
-       Vec2 Gavity = new Vec2(0.0f,4.5f);
+        ac=new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                root3.setVisible(false);
+                basketball.time-=1;
+                rootOpenTime=true;
+            }
+        };
+        timer = new Timer(700, ac);
+        timer.start();
+        Vec2 Gavity = new Vec2(0.0f,4.5f);
         world=new World(Gavity,true);
         world.setWarmStarting(true);
         world.setAutoClearForces(true);
@@ -148,32 +148,46 @@ public class TestScreen extends UIScreen {
         world.setContactListener(new ContactListener() {
             @Override
             public void beginContact(Contact contact) {
-                if (contact.getFixtureA().getBody() == ground3){
+                if (contact.getFixtureA().getBody() == ground3||contact.getFixtureB().getBody() == ground3){
                     sound=assets().getSound("sound/Clap");
                     sound.play();
                     basketball.layer().destroy();
                     basketball.body.setActive(false);
-                    basketball = new Basketball(world,450f,450f);
-                    layer.add(basketball.layer());
+                    random+=40f;
+                    if(random>=380){
+                        if(random>=600){
+                            basketball = new Basketball(world,600f,450f);
+                            layer.add(basketball.layer());
+                        }else{
+                            basketball = new Basketball(world,random,450f);
+                            layer.add(basketball.layer());
+                        }
+                    }else{
+                        basketball = new Basketball(world,380f,450f);
+                        layer.add(basketball.layer());
+                    }
                     root.removeAll();
                     rootOpenScore=true;
                     basketball.score+=1;
-                }else if (contact.getFixtureA().getBody() == ground1){
+                }else if (contact.getFixtureA().getBody() == ground1||contact.getFixtureB().getBody() == ground1){
                     edgeleft=assets().getSound("sound/edgeleft");
                     edgeleft.play();
                     basketball.body.applyLinearImpulse(new Vec2(2.7f,-2.2f),basketball.body.getPosition());
 
-                }else if(contact.getFixtureA().getBody() == ground2){
+                }else if(contact.getFixtureA().getBody() == ground2||contact.getFixtureB().getBody() == ground2){
                    // edge=assets().getSound("sound/edge");
                    // edge.play();
                     //basketball.body.applyLinearImpulse(new Vec2(0f,-1f),basketball.body.getPosition());
-                }else if(contact.getFixtureA().getBody() == ground4){
+                }else if(contact.getFixtureA().getBody() == ground4||contact.getFixtureB().getBody() == ground4){
                     bottom=assets().getSound("sound/bottom1");
                     bottom.play();
                    basketball.layer().destroy();
                    basketball.body.setActive(false);
-                   basketball = new Basketball(world,450f,450f);
-                   layer.add(basketball.layer());
+                   random-=20;
+                   if(random>=380){
+                       basketball = new Basketball(world,random,450f);
+                       layer.add(basketball.layer());
+                   }
                 }
             }
 
@@ -195,27 +209,74 @@ public class TestScreen extends UIScreen {
             }
 
         });
-      ActionListener ac=new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                    root3.setVisible(false);
-                    basketball.time-=1;
-                    rootOpenTime=true;
-            }
 
-
-        };
-        Timer timer = new Timer(700, ac);
-        timer.start();
-        basketball = new Basketball(world,450, 450f);
+        basketball = new Basketball(world,450f, 450f);
         layer.add(basketball.layer());
     }
 
    @Override
    public void update(int delta){
        basketball.update(delta);
-        world.step(0.033f, 10, 10);
+       world.step(0.033f, 10, 10);
        super.update(delta);
+       if (rootOpenTime){
+           root3 = iface.createRoot(
+                   AxisLayout.vertical().gap(15),
+                   SimpleStyles.newSheet(), layer);
+           root3.setSize(500, 50);
+           if(basketball.time>=0){
+               root3.add(new tripleplay.ui.Label("Time:"+basketball.time).addStyles(Style.FONT.is(basketball.TITLE_FONT),Style.COLOR.is(0xFFFFFFFF)));
+               rootOpenTime = false;
+           }else{
+               root3.add(new tripleplay.ui.Label("Time:0").addStyles(Style.FONT.is(basketball.TITLE_FONT),Style.COLOR.is(0xFFFFFFFF)));
+               rootOpenTime = true;
+
+           }
+       }
+       if(basketball.time==0){
+           if(basketball.score<=3){
+               bgover = assets().getImage("images/over.png");
+               bgLayerover = graphics().createImageLayer(bgover);
+               bgLayerover.setTranslation(0f,0f);
+               layer.add(bgLayerover);
+               bgLayerover.addListener(new Pointer.Adapter(){
+                   @Override
+                   public void onPointerEnd(Pointer.Event event) {
+                       rootOpenScore=true;
+                       root3.removeAll();
+                       rootOpenTime=true;
+                       rootOpenLevel=true;
+                       basketball.score=0;
+                       basketball.time=60;
+                       timer.stop();
+                       ss.remove(TestScreen.this);
+                   }
+               });
+               over=assets().getSound("sound/over");
+               over.play();
+           } else if(basketball.score>3){
+               bgwin = assets().getImage("images/next.png");
+               bgLayerwin = graphics().createImageLayer(bgwin);
+               bgLayerwin.setTranslation(0f,0f);
+               layer.add(bgLayerwin);
+               next=assets().getSound("sound/next");
+               next.play();
+               bgLayer.addListener(new Pointer.Adapter(){
+                   @Override
+                   public void onPointerEnd(Pointer.Event event) {
+                       basketball.level=2;
+                       basketball.time=60;
+                       rootOpenScore=true;
+                       rootOpenLevel=true;
+                       root3.removeAll();
+                       rootOpenTime=true;
+                       ss.push(new Level2(ss));
+                       ss.remove(TestScreen.this);
+                   }
+               });
+
+           }
+       }
        if (rootOpenScore){
            root = iface.createRoot(
                    AxisLayout.vertical().gap(15),
@@ -232,53 +293,7 @@ public class TestScreen extends UIScreen {
            root1.add(new tripleplay.ui.Label("Level:"+basketball.level).addStyles(Style.FONT.is(basketball.TITLE_FONT),Style.COLOR.is(0xFFFFFFFF)));
            rootOpenLevel = false;
        }
-       if (rootOpenTime){
-           root3 = iface.createRoot(
-                   AxisLayout.vertical().gap(15),
-                   SimpleStyles.newSheet(), layer);
-           root3.setSize(500, 50);
-            if(basketball.time>=0){
-                root3.add(new tripleplay.ui.Label("Time:"+basketball.time).addStyles(Style.FONT.is(basketball.TITLE_FONT),Style.COLOR.is(0xFFFFFFFF)));
-                rootOpenTime = false;
-            }else{
-                root3.add(new tripleplay.ui.Label("Time:0").addStyles(Style.FONT.is(basketball.TITLE_FONT),Style.COLOR.is(0xFFFFFFFF)));
-                rootOpenTime = false;
-            }
 
-
-       }
-       if(basketball.time==0){
-           if(basketball.score<=3){
-               bgover = assets().getImage("images/over.png");
-               bgLayerover = graphics().createImageLayer(bgover);
-               bgLayerover.setTranslation(0f,0f);
-               layer.add(bgLayerover);
-               bgLayerover.addListener(new Pointer.Adapter(){
-                   @Override
-                   public void onPointerEnd(Pointer.Event event) {
-                       ss.remove(TestScreen.this);
-                   }
-               });
-               over=assets().getSound("sound/over");
-               over.play();
-           } else if(basketball.score>3){
-               bgwin = assets().getImage("images/next.png");
-               bgLayerwin = graphics().createImageLayer(bgwin);
-               bgLayerwin.setTranslation(0f,0f);
-               layer.add(bgLayerwin);
-               next=assets().getSound("sound/next");
-               next.play();
-               bgLayer.addListener(new Pointer.Adapter(){
-                   @Override
-                   public void onPointerEnd(Pointer.Event event) {
-                       ss.replace(new Level2(ss));
-                       basketball.level=2;
-                       basketball.time=30;
-                   }
-               });
-
-           }
-       }
     }
 
     @Override
@@ -314,6 +329,14 @@ public class TestScreen extends UIScreen {
         imageLayer1.addListener(new Pointer.Adapter() {
             @Override
             public void onPointerEnd(Pointer.Event event) {
+
+                rootOpenScore = true;
+                basketball.score = 0;
+                basketball.time = 60;
+                rootOpenTime = true;
+                root3.removeAll();
+                rootOpenLevel = true;
+                timer.stop();
                 ss.remove(TestScreen.this);
             }
         }
@@ -327,7 +350,7 @@ public class TestScreen extends UIScreen {
         btnlayerright.addListener(new Pointer.Adapter() {
             @Override
             public void onPointerEnd(Pointer.Event event) {
-                basketball.body.applyForce(new Vec2(10f,0f),basketball.body.getPosition());
+                basketball.body.applyForce(new Vec2(10f, 0f), basketball.body.getPosition());
             }
         });
         btnlayerup.addListener(new Pointer.Adapter() {
@@ -336,9 +359,10 @@ public class TestScreen extends UIScreen {
                 shoot=assets().getSound("sound/shoot");
                 shoot.play();
                 basketball.body.applyForce(new Vec2(-60f, -140), basketball.body.getPosition());
-                basketball.body.applyAngularImpulse(-4f);
+                basketball.body.applyAngularImpulse(-3.5f);
             }
         });
+
     }
 
 }
