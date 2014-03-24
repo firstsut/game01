@@ -18,7 +18,7 @@ public class Basketball {
     public boolean hasLoaded =false;
     private PolygonShape shape;
     private TestScreen testScreen;
-    public static int score =0,time=30,level=1;
+    public static int score =0,time=60,level=1;
     private BodyDef bf;
     private int offset = 0;
     public Body body;

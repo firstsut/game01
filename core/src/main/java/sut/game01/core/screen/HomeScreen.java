@@ -1,11 +1,15 @@
 package sut.game01.core.screen;
 
 
+
+import org.jbox2d.dynamics.World;
 import playn.core.*;
 
 import static playn.core.PlayN.*;
 
+import playn.core.util.Clock;
 import react.UnitSlot;
+import sut.game01.core.sprite.Basketball;
 import tripleplay.game.ScreenStack;
 import tripleplay.game.UIScreen;
 import tripleplay.game.trans.SlideTransition;
@@ -19,6 +23,10 @@ public class HomeScreen extends UIScreen {
     private int x=200,x1=490,w=0,q=0;
     private Image  bgbas,bgleft,bgImage,btnstart;
     private ImageLayer bgLayerbas,bgLayerleft,bgLayer,btnlayer;
+    private Basketball basketball;
+    private World world;
+    private TestScreen testScreen;
+
     public HomeScreen(ScreenStack ss){
         this.ss = ss;
     }
@@ -44,13 +52,17 @@ public class HomeScreen extends UIScreen {
                 ss.push(new TestScreen(ss));
             }
         });
+
     }
     @Override
     public void wasAdded(){
+        //.wasAdded();
     }
 
     @Override
     public void update(int delta){
+        super.update(delta);
+
         if (q == 0) {
             x += 0.13f * delta;
             bgLayerbas.setTranslation(x, 430f);
@@ -80,4 +92,10 @@ public class HomeScreen extends UIScreen {
             }
         }
     }
+
+    @Override
+    public void paint(Clock clock){
+        super.paint(clock);
+    }
+
 }
