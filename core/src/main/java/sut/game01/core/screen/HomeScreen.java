@@ -10,26 +10,29 @@ import static playn.core.PlayN.*;
 import playn.core.util.Clock;
 import react.UnitSlot;
 import sut.game01.core.sprite.Basketball;
+import tripleplay.game.Screen;
 import tripleplay.game.ScreenStack;
+import tripleplay.game.UIAnimScreen;
 import tripleplay.game.UIScreen;
 import tripleplay.game.trans.SlideTransition;
 import tripleplay.ui.*;
 import tripleplay.ui.layout.AxisLayout;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class HomeScreen extends UIScreen {
 
     private static ScreenStack ss;
     private Root root;
     private int x=200,x1=490,w=0,q=0;
-    private Image  bgbas,bgleft,bgImage,btnstart;
-    private ImageLayer bgLayerbas,bgLayerleft,bgLayer,btnlayer;
-    private Basketball basketball;
-    private World world;
-    private TestScreen testScreen;
+    public Image  bgbas,bgleft,bgImage,btnstart;
+    public ImageLayer bgLayerbas,bgLayerleft,bgLayer,btnlayer;
 
     public HomeScreen(ScreenStack ss){
         this.ss = ss;
     }
+
     @Override
     public void wasShown() {
         super.wasShown();
@@ -49,10 +52,10 @@ public class HomeScreen extends UIScreen {
         btnlayer.addListener(new Pointer.Adapter(){
             @Override
             public void onPointerEnd(Pointer.Event event) {
+                //JOptionPane.showMessageDialog(null, "Basketball Shots 3D Go!!!!");
                 ss.push(new TestScreen(ss));
             }
         });
-
     }
     @Override
     public void wasAdded(){

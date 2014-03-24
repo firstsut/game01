@@ -64,35 +64,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Basketball.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/sprite/Basketball.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="31" selection-start="2572" selection-end="2572" vertical-scroll-proportion="0.0" vertical-offset="855" max-vertical-offset="1445">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestScreen.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TestScreen.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/TestScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="271" column="41" selection-start="11010" selection-end="11010" vertical-scroll-proportion="0.0" vertical-offset="3506" max-vertical-offset="5593">
+            <state line="319" column="36" selection-start="12652" selection-end="12652" vertical-scroll-proportion="0.35355285" vertical-offset="4658" max-vertical-offset="5661">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Level2.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Level2.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/Level2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="13" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.62168676" vertical-offset="439" max-vertical-offset="5525">
-              <folding>
-                <element signature="e#2239#2476#0" expanded="true" />
-                <element signature="e#9684#10251#0" expanded="true" />
-                <element signature="e#10232#10233#0" expanded="true" />
-                <element signature="e#12631#13096#0" expanded="true" />
-                <element signature="e#13085#13086#0" expanded="true" />
-              </folding>
+            <state line="131" column="40" selection-start="4910" selection-end="4910" vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="5491">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,10 +101,11 @@
         <option value="$PROJECT_DIR$/java/src/main/java/sut/game01/java/MyGameJava.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/sprite/Mario.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/TestScreen1.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/MyGame.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/Score.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/sprite/Basketball.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/TestScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/MyGame.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/HomeScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/TestScreen.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/Level2.java" />
       </list>
     </option>
@@ -423,7 +409,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../game01 - Copy/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tripleplay-master/pom.xml" />
     <property name="dynamic.classpath" value="false" />
     <property name="options.lastSelected" value="MavenSettings" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -622,6 +608,11 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -681,14 +672,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32826748" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.244713" sideWeight="0.50329673" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.244713" sideWeight="0.50220263" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15332326" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15256798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.244713" sideWeight="0.4967033" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.244713" sideWeight="0.4955947" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26058632" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -726,7 +717,7 @@
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USERS">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
     </option>
   </component>
@@ -748,20 +739,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/Level2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="32" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="5525">
-          <folding>
-            <element signature="e#2239#2476#0" expanded="true" />
-            <element signature="e#9684#10251#0" expanded="true" />
-            <element signature="e#10232#10233#0" expanded="true" />
-            <element signature="e#12631#13096#0" expanded="true" />
-            <element signature="e#13085#13086#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/MyGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="4" selection-start="283" selection-end="334" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1003">
+        <state line="185" column="67" selection-start="7471" selection-end="7471" vertical-scroll-proportion="0.0" vertical-offset="3145" max-vertical-offset="6324">
           <folding />
         </state>
       </provider>
@@ -777,8 +755,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="50" column="47" selection-start="1469" selection-end="1469" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1054">
           <folding>
-            <element signature="e#1566#1739#0" expanded="true" />
-            <element signature="e#1728#1729#0" expanded="true" />
+            <element signature="e#1599#1857#0" expanded="true" />
+            <element signature="e#1846#1847#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -801,8 +779,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="26" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1275">
           <folding>
-            <element signature="e#1566#1739#0" expanded="true" />
-            <element signature="e#1728#1729#0" expanded="true" />
+            <element signature="e#1599#1857#0" expanded="true" />
+            <element signature="e#1846#1847#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1024,61 +1002,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/sprite/Basketball.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="31" selection-start="2572" selection-end="2572" vertical-scroll-proportion="0.0" vertical-offset="855" max-vertical-offset="1445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/jbox2d/jbox2d-library/2.1.2.3/jbox2d-library-2.1.2.3.jar!/org/jbox2d/dynamics/World.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="0" selection-start="6423" selection-end="6423" vertical-scroll-proportion="0.8025641" vertical-offset="2050" max-vertical-offset="2465">
+        <state line="140" column="0" selection-start="6423" selection-end="6423" vertical-scroll-proportion="0.8025641" vertical-offset="2050" max-vertical-offset="2465" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jbox2d/jbox2d-library/2.1.2.3/jbox2d-library-2.1.2.3.jar!/org/jbox2d/collision/broadphase/BroadPhase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="0" selection-start="2332" selection-end="2332" vertical-scroll-proportion="1.1948718" vertical-offset="282" max-vertical-offset="850" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/googlecode/playn/playn-core/1.8/playn-core-1.8-sources.jar!/playn/core/Layer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="247" column="8" selection-start="9331" selection-end="9373" vertical-scroll-proportion="0.33255813" vertical-offset="3750" max-vertical-offset="9707">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/MyGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="35" selection-start="185" selection-end="185" vertical-scroll-proportion="0.07943925" vertical-offset="0" max-vertical-offset="646">
+        <state line="10" column="53" selection-start="284" selection-end="284" vertical-scroll-proportion="0.11915888" vertical-offset="51" max-vertical-offset="646">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/HomeScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="43" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.47663552" vertical-offset="323" max-vertical-offset="1615">
+        <state line="26" column="22" selection-start="631" selection-end="631" vertical-scroll-proportion="-0.5490654" vertical-offset="388" max-vertical-offset="1581">
           <folding>
-            <element signature="e#1566#1739#0" expanded="true" />
-            <element signature="e#1728#1729#0" expanded="true" />
+            <element signature="e#1599#1857#0" expanded="true" />
+            <element signature="e#1846#1847#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jbox2d/jbox2d-library/2.1.2.3/jbox2d-library-2.1.2.3.jar!/org/jbox2d/collision/broadphase/BroadPhase.class">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/sprite/Basketball.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="0" selection-start="2332" selection-end="2332" vertical-scroll-proportion="1.1948718" vertical-offset="282" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/TestScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="271" column="41" selection-start="11010" selection-end="11010" vertical-scroll-proportion="0.0" vertical-offset="1976" max-vertical-offset="5593">
+        <state line="17" column="36" selection-start="481" selection-end="481" vertical-scroll-proportion="-0.19859813" vertical-offset="255" max-vertical-offset="1445">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/Level2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="13" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.62168676" vertical-offset="439" max-vertical-offset="5525">
-          <folding>
-            <element signature="e#2239#2476#0" expanded="true" />
-            <element signature="e#9684#10251#0" expanded="true" />
-            <element signature="e#10232#10233#0" expanded="true" />
-            <element signature="e#12631#13096#0" expanded="true" />
-            <element signature="e#13085#13086#0" expanded="true" />
-          </folding>
+        <state line="131" column="40" selection-start="4910" selection-end="4910" vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="5491">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/sut/game01/core/screen/TestScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="319" column="36" selection-start="12652" selection-end="12652" vertical-scroll-proportion="0.35355285" vertical-offset="4658" max-vertical-offset="5661">
+          <folding />
         </state>
       </provider>
     </entry>
