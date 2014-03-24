@@ -50,6 +50,7 @@ public class TestScreen extends UIScreen {
     public ActionListener ac;
     public Timer timer;
 
+
     public TestScreen(ScreenStack ss){
         this.ss = ss;
     }
@@ -127,14 +128,14 @@ public class TestScreen extends UIScreen {
         ground.createFixture(groundShape3, 0.0f);
         //ซ้ายขวาห่วง
         groundShape4.setAsEdge(new Vec2(0.4f, 6.1f),
-                new Vec2(1.2f, 10f));
+                new Vec2(1.2f, 11f));
         ground2.createFixture(groundShape4, 0.0f);
         groundShape5.setAsEdge(new Vec2(3.2f, 6.3f),
-                new Vec2(2.8f, 10f));
+                new Vec2(2.8f, 11f));
         ground2.createFixture(groundShape5, 0.0f);
         //ลงห่วง
-        groundShape6.setAsEdge(new Vec2(1f, height-8.5f),
-                new Vec2(width-21f, height-8.5f));
+        groundShape6.setAsEdge(new Vec2(1f, height-8f),
+                new Vec2(width-21f, height-8f));
         ground3.createFixture(groundShape6, 0.0f);
         //พื้นลองเมื่อไม่ลงห่วง
         groundShape7.setAsEdge(new Vec2(1f, height-0.2f),
@@ -172,8 +173,7 @@ public class TestScreen extends UIScreen {
                 }else if (contact.getFixtureA().getBody() == ground1||contact.getFixtureB().getBody() == ground1){
                     edgeleft=assets().getSound("sound/edgeleft");
                     edgeleft.play();
-                    basketball.body.applyLinearImpulse(new Vec2(2.7f,-2.2f),basketball.body.getPosition());
-
+                    basketball.body.applyLinearImpulse(new Vec2(3.0f,-2.05f),basketball.body.getPosition());
                 }else if(contact.getFixtureA().getBody() == ground2||contact.getFixtureB().getBody() == ground2){
                    // edge=assets().getSound("sound/edge");
                    // edge.play();
@@ -186,6 +186,9 @@ public class TestScreen extends UIScreen {
                    random-=20;
                    if(random>=380){
                        basketball = new Basketball(world,random,450f);
+                       layer.add(basketball.layer());
+                   }else{
+                       basketball = new Basketball(world,380,450f);
                        layer.add(basketball.layer());
                    }
                 }
@@ -217,7 +220,7 @@ public class TestScreen extends UIScreen {
    @Override
    public void update(int delta){
        basketball.update(delta);
-       world.step(0.033f, 10, 10);
+       world.step(0.035f, 20, 20);
        super.update(delta);
        if (rootOpenTime){
            root3 = iface.createRoot(
@@ -234,7 +237,7 @@ public class TestScreen extends UIScreen {
            }
        }
        if(basketball.time==0){
-           if(basketball.score<=3){
+           if(basketball.score<=1){
                bgover = assets().getImage("images/over.png");
                bgLayerover = graphics().createImageLayer(bgover);
                bgLayerover.setTranslation(0f,0f);
@@ -247,14 +250,14 @@ public class TestScreen extends UIScreen {
                        rootOpenTime=true;
                        rootOpenLevel=true;
                        basketball.score=0;
-                       basketball.time=60;
+                       basketball.time=15;
                        timer.stop();
                        ss.remove(TestScreen.this);
                    }
                });
                over=assets().getSound("sound/over");
                over.play();
-           } else if(basketball.score>3){
+           } else if(basketball.score>1){
                bgwin = assets().getImage("images/next.png");
                bgLayerwin = graphics().createImageLayer(bgwin);
                bgLayerwin.setTranslation(0f,0f);
@@ -265,10 +268,11 @@ public class TestScreen extends UIScreen {
                    @Override
                    public void onPointerEnd(Pointer.Event event) {
                        basketball.level=2;
-                       basketball.time=60;
+                       basketball.time=15;
                        rootOpenScore=true;
                        rootOpenLevel=true;
                        root3.removeAll();
+                       timer.stop();
                        rootOpenTime=true;
                        ss.push(new Level2(ss));
                        ss.remove(TestScreen.this);
@@ -332,7 +336,7 @@ public class TestScreen extends UIScreen {
 
                 rootOpenScore = true;
                 basketball.score = 0;
-                basketball.time = 60;
+                basketball.time = 15;
                 rootOpenTime = true;
                 root3.removeAll();
                 rootOpenLevel = true;
@@ -344,13 +348,13 @@ public class TestScreen extends UIScreen {
         btnlayerleft.addListener(new Pointer.Adapter() {
             @Override
             public void onPointerEnd(Pointer.Event event) {
-                basketball.body.applyForce(new Vec2(-10f, 0f), basketball.body.getPosition());
+                basketball.body.applyForce(new Vec2(-8.5f, 0f), basketball.body.getPosition());
             }
         });
         btnlayerright.addListener(new Pointer.Adapter() {
             @Override
             public void onPointerEnd(Pointer.Event event) {
-                basketball.body.applyForce(new Vec2(10f, 0f), basketball.body.getPosition());
+                basketball.body.applyForce(new Vec2(8.5f, 0f), basketball.body.getPosition());
             }
         });
         btnlayerup.addListener(new Pointer.Adapter() {

@@ -1,5 +1,7 @@
 package sut.game01.core.screen;
 
+
+
 import org.jbox2d.callbacks.ContactImpulse;
 import org.jbox2d.callbacks.ContactListener;
 import org.jbox2d.callbacks.DebugDraw;
@@ -11,6 +13,7 @@ import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.World;
 import org.jbox2d.dynamics.contacts.Contact;
 import playn.core.*;
+import playn.core.Image;
 import playn.core.util.Clock;
 import react.UnitSlot;
 import sut.game01.core.debug.DebugDrawBox2D;
@@ -25,6 +28,7 @@ import tripleplay.ui.Style;
 import tripleplay.ui.layout.AxisLayout;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,7 +43,7 @@ public class Level2 extends UIScreen {
     private DebugDrawBox2D debugDraw;
     private static boolean showDebugDraw=false;
     private static int width=24;
-    public static int height=18;
+    public static int height=18,highscore=0;
     private World world;
     private Image imageBack;
     public static boolean rootOpenScore=true,rootOpenTime=true,rootOpenLevel=true;
@@ -47,14 +51,15 @@ public class Level2 extends UIScreen {
     private ImageLayer imageLayer1,bgLayer,bgci,bgLayerwin,bgLayerover,btnlayerleft,btnlayerright,btnlayerup;
     private	float x = 0f,random=450f;
     private	float y = 0f;
-    private Root root,root1,root2,root3;
+    private Root root,root1,root2,root3,root4;
     private final ScreenStack ss;
     private PolygonShape groundShape,groundShape1,groundShape2,groundShape3,groundShape4,groundShape5,groundShape6,groundShape7,groundShape8;
     private Basketball basketball;
     private Body ground,ground1,ground2,ground3,ground4,ground5;
     private Sound sound,win,over,shoot,bottom,edgeleft,edge;
     public ActionListener ac;
-    public Timer timer1;
+    public Timer timer;
+    private Frame frame;
 
     public Level2(ScreenStack ss){
         this.ss = ss;
@@ -66,12 +71,12 @@ public class Level2 extends UIScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 root3.setVisible(false);
-                basketball.time-=0;
+                basketball.time-=1;
                 rootOpenTime=true;
             }
         };
-        timer1 = new Timer(700, ac);
-        timer1.start();
+        timer = new Timer(650,ac);
+        timer.start();
         Vec2 Gavity = new Vec2(0.0f,4.5f);
         world=new World(Gavity,true);
         world.setWarmStarting(true);
@@ -134,14 +139,14 @@ public class Level2 extends UIScreen {
         ground.createFixture(groundShape3, 0.0f);
         //ซ้ายขวาห่วง
         groundShape4.setAsEdge(new Vec2(0.4f, 6.1f),
-                new Vec2(1.2f, 10f));
+                new Vec2(1.2f, 11f));
         ground2.createFixture(groundShape4, 0.0f);
         groundShape5.setAsEdge(new Vec2(3.2f, 6.3f),
-                new Vec2(2.8f, 10f));
+                new Vec2(2.8f, 11f));
         ground2.createFixture(groundShape5, 0.0f);
         //ลงห่วง
-        groundShape6.setAsEdge(new Vec2(1f, height-8.5f),
-                new Vec2(width-21f, height-8.5f));
+        groundShape6.setAsEdge(new Vec2(1f, height-8f),
+                new Vec2(width-21f, height-8f));
         ground3.createFixture(groundShape6, 0.0f);
         //พื้นลองเมื่อไม่ลงห่วง
         groundShape7.setAsEdge(new Vec2(1f, height-0.2f),
@@ -178,7 +183,7 @@ public class Level2 extends UIScreen {
                 }else if (contact.getFixtureA().getBody() == ground1){
                     edgeleft=assets().getSound("sound/edgeleft");
                     edgeleft.play();
-                    basketball.body.applyLinearImpulse(new Vec2(2.8f,-2f),basketball.body.getPosition());
+                    basketball.body.applyLinearImpulse(new Vec2(3.0f,-2.09f),basketball.body.getPosition());
 
                 }else if(contact.getFixtureA().getBody() == ground2){
                     //edge=assets().getSound("sound/edge");
@@ -191,6 +196,9 @@ public class Level2 extends UIScreen {
                     random-=30;
                     if(random>=380){
                         basketball = new Basketball(world,random,450f);
+                        layer.add(basketball.layer());
+                    }else{
+                        basketball = new Basketball(world,380,450f);
                         layer.add(basketball.layer());
                     }
                 }
@@ -220,7 +228,7 @@ public class Level2 extends UIScreen {
     @Override
     public void update(int delta){
         basketball.update(delta);
-        world.step(0.033f, 10, 10);
+        world.step(0.035f, 20, 20);
         super.update(delta);
         if (rootOpenTime){
             root3 = iface.createRoot(
@@ -238,7 +246,7 @@ public class Level2 extends UIScreen {
 
         }
         if(basketball.time==0){
-            if(basketball.score<=7){
+            if(basketball.score<=2){
                 bgover = assets().getImage("images/over.png");
                 bgLayerover = graphics().createImageLayer(bgover);
                 bgLayerover.setTranslation(0f,0f);
@@ -247,19 +255,20 @@ public class Level2 extends UIScreen {
                     @Override
                     public void onPointerEnd(Pointer.Event event) {
                         basketball.level=1;
-                        basketball.time=60;
+                        basketball.time=15;
                         root3.removeAll();
                         basketball.score=0;
                         rootOpenScore=true;
                         rootOpenTime=true;
                         rootOpenLevel=true;
+                        timer.stop();
                         ss.push(new HomeScreen(ss));
                         ss.remove(Level2.this);
                     }
                 });
                 over=assets().getSound("sound/over");
                 over.play();
-            } else if(basketball.score>7){
+            } else if(basketball.score>2){
                 bgwin = assets().getImage("images/winner1.png");
                 bgLayerwin = graphics().createImageLayer(bgwin);
                 bgLayerwin.setTranslation(0f,0f);
@@ -320,28 +329,28 @@ public class Level2 extends UIScreen {
             @Override
             public void onPointerEnd(Pointer.Event event) {
                 basketball.level=1;
-                basketball.time=60;
+                basketball.time=15;
                 basketball.score=0;
                 rootOpenScore=true;
                 root3.removeAll();
                 rootOpenTime=true;
                 rootOpenLevel=true;
+                timer.stop();
                 ss.push(new HomeScreen(ss));
                 ss.remove(Level2.this);
-
             }
         }
         );
         btnlayerleft.addListener(new Pointer.Adapter() {
             @Override
             public void onPointerEnd(Pointer.Event event) {
-                basketball.body.applyForce(new Vec2(-10f, 0f), basketball.body.getPosition());
+                basketball.body.applyForce(new Vec2(-8.5f, 0f), basketball.body.getPosition());
             }
         });
         btnlayerright.addListener(new Pointer.Adapter() {
             @Override
             public void onPointerEnd(Pointer.Event event) {
-                basketball.body.applyForce(new Vec2(10f,0f),basketball.body.getPosition());
+                basketball.body.applyForce(new Vec2(8.5f,0f),basketball.body.getPosition());
             }
         });
         btnlayerup.addListener(new Pointer.Adapter() {
@@ -349,7 +358,7 @@ public class Level2 extends UIScreen {
             public void onPointerEnd(Pointer.Event event) {
                 shoot=assets().getSound("sound/shoot");
                 shoot.play();
-                basketball.body.applyForce(new Vec2(-65f, -138), basketball.body.getPosition());
+                basketball.body.applyForce(new Vec2(-65f, -142), basketball.body.getPosition());
                 basketball.body.applyAngularImpulse(-3.5f);
             }
         });

@@ -18,7 +18,7 @@ public class Basketball {
     public boolean hasLoaded =false;
     private PolygonShape shape;
     private TestScreen testScreen;
-    public static int score =0,time=60,level=1;
+    public static int score =0,time=15,level=1;
     private BodyDef bf;
     private int offset = 0;
     public Body body;
@@ -62,12 +62,12 @@ public class Basketball {
         CircleShape a=new CircleShape();
         a.m_radius=1.0f;
         fd.shape=a;
-        fd.density=0.1185f;
+        fd.density=0.119f;
         fd.friction=0.1f;
         fd.restitution=0.4f;
         body.createFixture(fd);
-        body.setAngularDamping(0.5f);
-        body.setTransform(new Vec2(x,y),0f);
+        body.setAngularDamping(0.6f);
+        body.setTransform(new Vec2(x,y),100f);
         return body;
     }
 
